@@ -18,8 +18,18 @@ public class Riddler {
 
     public String decryptTwo(String encrypted) {
         String decrypted = "";
-
+        int space;
+        String decode;
+        int decodenum;
         // TODO: Complete the decryptTwo() function.
+        while (encrypted.length() > 0){
+            space =encrypted.indexOf(" ");
+            decode = encrypted.substring(0, space);
+            encrypted = encrypted.substring(space);
+            decodenum = Integer.parseInt(decode);
+            decode = String.valueOf((char)decodenum);
+            decrypted = decrypted + decode;
+        }
 
         return decrypted;
     }
