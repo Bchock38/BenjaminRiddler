@@ -1,5 +1,3 @@
-//import jdk.incubator.vector.VectorOperators;
-
 /**
  * The Riddler:
  * A puzzle by Zach Blick
@@ -101,10 +99,28 @@ public class Riddler {
     }
 
     public String decryptFour(String encrypted) {
+        // a= 97 z = 122
+        // A=65- Z=90
         String decrypted = "";
-
+        Character current;
+        int ascii;
+        int dif = 0;
         // TODO: Complete the decryptFour() function.
-
+        while (encrypted.length() > 0){
+            current = encrypted.charAt(0);
+            ascii = (int) current;
+            //System.out.println(ascii);
+            ascii = ascii - 9984+65;
+            if (ascii > 122){
+                dif = ascii-123;
+                ascii = 97 + dif;
+            }
+            //System.out.println(ascii);
+            current = (char) ascii;
+            //System.out.print(current);
+            encrypted = encrypted.substring(1);
+        }
+        System.out.println(decrypted);
         return decrypted;
     }
 }
