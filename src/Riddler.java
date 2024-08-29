@@ -14,15 +14,18 @@ public class Riddler {
         // A=65- Z=90
         // TODO: Complete the decryptOne() function.
         String decodechr;
-        String currentchr;
         Character cchar;
         int chrascii;
         int dif;
+        //While theirs still charcters in the code decode
         while (encrypted.length() > 1){
-            currentchr = encrypted.substring(0,1);
-            cchar = currentchr.charAt(0);
+            //take the first character of the code
+            cchar = encrypted.charAt(0);
+            //cast it to an int
             chrascii = (int) cchar;
+            //if the char is a lowercase letter
             if ( chrascii <= 122 && chrascii >= 97){
+                //if the new char is out of bounds of the lowercase letter wrap
                 if (chrascii+9 > 122){
                     dif = chrascii+9-123;
                     chrascii = 97 + dif;
@@ -30,10 +33,14 @@ public class Riddler {
                 else{
                     chrascii = chrascii+9;
                 }
+                //cast back to a char
                 decodechr = Character.toString((char) chrascii);
+                //add to decoded solution
                 decrypted = decrypted + decodechr;
             }
+            //if char is a uppercase letter
             else if ( chrascii <= 90 && chrascii >= 65){
+               //check if new letter is in bounds of uppercase letters if not wrapt
                 if (chrascii+9 > 90){
                     dif = chrascii+9 - 91;
                     chrascii = 65 + dif;
@@ -41,15 +48,20 @@ public class Riddler {
                 else{
                     chrascii = chrascii + 9;
                 }
+                //cast back to char
                 decodechr = Character.toString((char) chrascii);
+                //add to solution
                 decrypted = decrypted + decodechr;
             }
             else {
+                // add to solution
                 decrypted = decrypted + cchar;
             }
+            //remove the used char
             encrypted = encrypted.substring(1);
         }
         System.out.println(decrypted);
+        //return decrpted
         return decrypted;
     }
 
@@ -59,13 +71,14 @@ public class Riddler {
         String decode;
         int decodenum;
         // TODO: Complete the decryptTwo() function.
+        //While theirs still charcters in the code decode
         while (encrypted.length() > 1){
             space = encrypted.indexOf(" ");
             decode = encrypted.substring(0, space);
             decodenum = Integer.parseInt(decode);
-            encrypted = encrypted.substring(space+1);
             decode = String.valueOf((char)decodenum);
             decrypted = decrypted + decode;
+            encrypted = encrypted.substring(space+1);
         }
         System.out.println(decrypted);
         return decrypted;
@@ -78,6 +91,7 @@ public class Riddler {
         int tempint = 0;
         int total = 0;
         // TODO: Complete the decryptThree() function.
+        //While theirs still charcters in the code decode
         while (encrypted.length() > 0){
             for (int i = 0; i < 8; i++){
                 temp = encrypted.charAt(i);
@@ -102,6 +116,7 @@ public class Riddler {
         int ascii;
         int dif = 0;
         // TODO: Complete the decryptFour() function.
+        //While theirs still charcters in the code decode
         while (encrypted.length() > 0){
             current = encrypted.charAt(0);
             ascii = (int) current;
