@@ -106,10 +106,6 @@ public class Riddler {
             current = encrypted.charAt(0);
             ascii = (int) current;
             ascii = ascii - 9984+65;
-            if (ascii > 122){
-                dif = ascii-123;
-                ascii = 97 + dif;
-            }
             current = (char) ascii;
             decrypted += current;
             encrypted = encrypted.substring(1);
