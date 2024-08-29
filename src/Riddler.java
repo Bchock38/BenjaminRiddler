@@ -1,3 +1,5 @@
+//import jdk.incubator.vector.VectorOperators;
+
 /**
  * The Riddler:
  * A puzzle by Zach Blick
@@ -73,9 +75,28 @@ public class Riddler {
 
     public String decryptThree(String encrypted) {
         String decrypted = "";
-
+        Character temp;
+        Character tempChr;
+        int tempint = 0;
+        int total = 0;
         // TODO: Complete the decryptThree() function.
+        while (encrypted.length() > 0){
+            for (int i = 0; i < 8; i++){
+                temp = encrypted.charAt(i);
+                tempint = Integer.parseInt(String.valueOf(temp));
+                //System.out.print(tempint);
+                total += tempint << 7-i;
 
+            }
+            //System.out.print(total);
+            //System.out.print(" ");
+            tempChr = (char) total;
+            //System.out.println(tempChr);
+            decrypted = decrypted + tempChr;
+            encrypted = encrypted.substring(8);
+            total = 0;
+        }
+        System.out.println(decrypted);
         return decrypted;
     }
 
