@@ -82,14 +82,10 @@ public class Riddler {
             for (int i = 0; i < 8; i++){
                 temp = encrypted.charAt(i);
                 tempint = Integer.parseInt(String.valueOf(temp));
-                //System.out.print(tempint);
-                total += tempint << 7-i;
+                total += tempint << 8-i-1;
 
             }
-            //System.out.print(total);
-            //System.out.print(" ");
             tempChr = (char) total;
-            //System.out.println(tempChr);
             decrypted = decrypted + tempChr;
             encrypted = encrypted.substring(8);
             total = 0;
@@ -109,15 +105,13 @@ public class Riddler {
         while (encrypted.length() > 0){
             current = encrypted.charAt(0);
             ascii = (int) current;
-            //System.out.println(ascii);
             ascii = ascii - 9984+65;
             if (ascii > 122){
                 dif = ascii-123;
                 ascii = 97 + dif;
             }
-            //System.out.println(ascii);
             current = (char) ascii;
-            //System.out.print(current);
+            decrypted += current;
             encrypted = encrypted.substring(1);
         }
         System.out.println(decrypted);
